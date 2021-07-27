@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
     root: {
-        '&.MultiTextField-root': {
+        '& .MultiTextField-root': {
             margin: theme.spacing(1),
         },
     },
