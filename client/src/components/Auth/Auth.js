@@ -30,9 +30,9 @@ const Auth = () => {
             dispatch(signup(formData, history));
         } else {
             dispatch(signin(formData, history));
-
         }
     };
+    
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     };
