@@ -21,12 +21,16 @@ const Form = ({ currentId, setCurrentId }) => {
         if (post) setPostData(post);
     }, [post])
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if (currentId !== -1) {
+
+        if (currentId === 0) {
             dispatch(createPost({ ...postData, name: user?.result?.name }));
             clear();
         } else {
+            console.log(postData);
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             clear();
         }
