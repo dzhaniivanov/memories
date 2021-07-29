@@ -25,12 +25,14 @@ const Form = ({ currentId, setCurrentId }) => {
         e.preventDefault();
         if (currentId !== -1) {
             dispatch(createPost({ ...postData, name: user?.result?.name }));
-            clear(); 
+            clear();
         } else {
             dispatch(updatePost(currentId, { ...postData, name: user?.result?.name }));
             clear();
         }
     };
+
+
 
     const clear = () => {
         setCurrentId(null);
