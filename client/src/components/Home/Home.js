@@ -6,7 +6,7 @@ import Form from '../Form/Form';
 import ChipInput from 'material-ui-chip-input';
 
 
-import { getPosts,getPostsBySearch } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import Pagination from '../Pagination';
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
@@ -37,8 +37,9 @@ const Home = () => {
     }, [currentId, dispatch]);
 
     const searchPost = () => {
-        if (search.trim()) {
-            dispatch(getPostsBySearch({search,tags:tags.join(',')}))
+        if (search.trim() || tags) {
+            dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
+            history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')} `);
         } else {
             history.push('/');
         };
