@@ -6,7 +6,7 @@ import Form from '../Form/Form';
 import ChipInput from 'material-ui-chip-input';
 
 
-import { getPosts, getPostsBySearch } from '../../actions/posts';
+import { getPostsBySearch } from '../../actions/posts';
 import Pagination from '../Pagination';
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
@@ -81,9 +81,11 @@ const Home = () => {
                             <Button onClick={searchPost} className={classes.searchButton} color="primary" variant="contained">Search</Button>
                         </AppBar>
                         <Form currentId={currentId} setCurrentId={setCurrentId} />
-                        <Paper elevation={6}>
-                            <Pagination page={page} />
-                        </Paper>
+                        {(!searchQuery && !tags.length) && (
+                            <Paper elevation={6} className={classes.pagination}>
+                                <Pagination page={page} />
+                            </Paper>
+                        )}
                     </Grid>
                 </Grid>
             </Container>
