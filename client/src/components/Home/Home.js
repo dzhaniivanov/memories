@@ -4,15 +4,10 @@ import { useHistory, useLocation } from 'react-router';
 import Posts from '../Posts/Posts';
 import Form from '../Form/Form';
 import ChipInput from 'material-ui-chip-input';
-
-
-import { getPostsBySearch } from '../../actions/posts';
+import { getPosts, getPostsBySearch } from '../../actions/posts';
 import Pagination from '../Pagination';
 import { useDispatch } from 'react-redux';
 import useStyles from './styles';
-
-
-
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -26,18 +21,14 @@ const Home = () => {
     const history = useHistory();
     const page = query.get('page') || 1;
     const searchQuery = query.get('searchQuery');
-
-
     const [search, setSearch] = useState('');
     const [tags, setTags] = useState([]);
-
-
 
 
     const searchPost = () => {
         if (search.trim() || tags) {
             dispatch(getPostsBySearch({ search, tags: tags.join(',') }));
-            history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')} `);
+            history.push(`/posts/search?searchQuery=${search || 'none'}&tags=${tags.join(',')}`);
         } else {
             history.push('/');
         };
