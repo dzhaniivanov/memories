@@ -40,8 +40,8 @@ const Home = () => {
         }
     };
 
-    const handleAdd = (tag) => setTags([...tags, tag]);
-    const handleDelete = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
+    const handleAddChip = (tag) => setTags([...tags, tag]);
+    const handleDeleteChip = (tagToDelete) => setTags(tags.filter((tag) => tag !== tagToDelete));
 
     return (
         <Grow in>
@@ -58,14 +58,14 @@ const Home = () => {
                                 label="Search Memories"
                                 fullWidth
                                 value={search}
-                                onKeyPress={handleKeyPress}
+                                onKeyDown={handleKeyPress}
                                 onChange={(e) => setSearch(e.target.value)}
                             />
                             <ChipInput
                                 style={{ margin: '10px 0' }}
                                 value={tags}
-                                onAdd={handleAdd}
-                                onDelete={handleDelete}
+                                onAdd={(chip) => handleAddChip(chip)}
+                                onDelete={(chip) => handleDeleteChip(chip)}
                                 label="Search Tags"
                                 variant="outlined"
                             />
